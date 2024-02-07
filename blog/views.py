@@ -1,13 +1,13 @@
 import logging
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from django.shortcuts import get_object_or_404, redirect
 
 from .models import Post
 from .forms import CommentForm
 
 
 logger = logging.getLogger(__name__)
+
 
 def index(request):
   posts = Post.objects.filter(published_at__lte=timezone.now())
